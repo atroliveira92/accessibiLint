@@ -1,0 +1,49 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+dependencies {
+    //Lint dependencies:
+    compile 'com.android.tools.lint:lint-api:26.2.1'
+    compile 'com.android.tools.lint:lint-checks:26.2.1'
+    testCompile 'com.android.tools.lint:lint-tests:26.2.1'
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:3.0.0'
+}
+
+jar {
+    baseName 'accessibilint'
+    version '1.0'
+
+    manifest {
+        attributes 'Manifest-Version': 1.0
+        attributes('Lint-Registry-v2': 'br.arthur.accessibilitylint.CustomIssueRegistry')
+    }
+}
+
+defaultTasks 'assemble'
+
+/**
+ * Copies the jar file containing your lint module
+ * into the .android/lint directory in your home folder.
+ *
+ * @ see Doug Stevenson's comments at the bottom of this article.
+ * */
+task copyLintJar(type: Copy) {
+    String file1 = "${buildDir}\\libs\\accessibilint-1.0.jar"
+    String file2 = System.getProperty("user.home") + '\\.android\\.android\\lint\\accessibilint-1.0.jar'
+
+    println "${new File(file1).exists()} $file1"
+    println "${new File(file2).exists()} $file2"
+
+    new File(file1).renameTo(new File(file2))
+    //from file(file1)
+    //into file(file3)
+}
+
+
+// Runs the copyLintJar task after build has completed.
+//build.finalizedBy(copyLintJar)

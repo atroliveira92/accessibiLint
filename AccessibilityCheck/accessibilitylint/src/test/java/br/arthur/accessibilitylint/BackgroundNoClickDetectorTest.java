@@ -73,7 +73,7 @@ public class BackgroundNoClickDetectorTest extends LintDetectorTest {
 //                    "        android:onClick=\"acessarLink\"/>" +
 //                    "    " +
 //                    "</LinearLayout>";
-//        }
+        //}
 
         lint().files(xml("res/layout/layout.xml", xmlLayout))
                 .allowMissingSdk()

@@ -31,39 +31,39 @@ public class LinkMissingExplanationIssueTest extends LintDetectorTest{
     }
 
     public void testHasSaveInMenu() {
-        String xmlMenu = "<menu xmlns:android=\"http://schemas.android.com/apk/res/android\"" +
-                "    xmlns:app=\"http://schemas.android.com/apk/res-auto\">" +
-                "    <item\n" +
-                "        android:id=\"@+id/action_settings\"" +
-                "        android:orderInCategory=\"100\"" +
-                "        android:title=\"@string/salvar\"" +
-                "        app:showAsAction=\"never\"/>" +
-                "</menu>";
-
-        lint().files(xml("res/menu/menu_main.xml",xmlMenu))
-                .allowMissingSdk()
-                .issues(ISSUE_IMPORTANT_ACTION_ON_MENU)
-                .run()
-                .expectWarningCount(1);
-
-//        String xmlLayout = "<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"" +
-//                "    android:layout_width=\"match_parent\"" +
-//                "    android:layout_height=\"match_parent\"" +
-//                "    android:orientation=\"vertical\">" +
-//                "" +
-//                "    <TextView" +
-//                "        android:layout_width=\"wrap_content\"" +
-//                "        android:layout_height=\"wrap_content\"" +
-//                "        android:text=\"Clique aqui\"" +
-//                "        android:onClick=\"acessarLink\"/>" +
-//                "    " +
-//                "</LinearLayout>";
+//        String xmlMenu = "<menu xmlns:android=\"http://schemas.android.com/apk/res/android\"" +
+//                "    xmlns:app=\"http://schemas.android.com/apk/res-auto\">" +
+//                "    <item\n" +
+//                "        android:id=\"@+id/action_settings\"" +
+//                "        android:orderInCategory=\"100\"" +
+//                "        android:title=\"@string/salvar\"" +
+//                "        app:showAsAction=\"never\"/>" +
+//                "</menu>";
 //
-//        lint().files(xml("res/layout/blabla.xml",xmlLayout))
+//        lint().files(xml("res/menu/menu_main.xml",xmlMenu))
 //                .allowMissingSdk()
 //                .issues(ISSUE_IMPORTANT_ACTION_ON_MENU)
 //                .run()
 //                .expectWarningCount(1);
+
+        String xmlLayout = "<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"" +
+                "    android:layout_width=\"match_parent\"" +
+                "    android:layout_height=\"match_parent\"" +
+                "    android:orientation=\"vertical\">" +
+                "" +
+                "    <TextView" +
+                "        android:layout_width=\"wrap_content\"" +
+                "        android:layout_height=\"wrap_content\"" +
+                "        android:text=\"link\"" +
+                "        android:onClick=\"acessarLink\"/>" +
+                "    " +
+                "</LinearLayout>";
+
+        lint().files(xml("res/layout/blabla.xml",xmlLayout))
+                .allowMissingSdk()
+                .issues(LINK_WITHOUT_RIGHT_EXPLANATION)
+                .run()
+                .expectWarningCount(1);
     }
 
     public void textHasCliqueAqui() {

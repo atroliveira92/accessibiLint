@@ -18,6 +18,8 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(LinkMissingExplanationIssue.LINK_WITHOUT_RIGHT_EXPLANATION);
                 add(ImportantActionOnMenuIssue.ISSUE_IMPORTANT_ACTION_ON_MENU);
                 add(BackgroundNoClickDetector.ISSUE_NO_CLICK_ON_BACKGROUND_VIEW);
+                //add(BackgroundNoClickDetector.ISSUE_BACKGROUND_COLOR_CONTRAST_RATIO);
+                add(ContrastRatioDetector.ISSUE_COLOR_CONTRAST_RATIO);
             }
         };
     }

@@ -4,22 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+
+    <View
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="accessLink">
-
+        android:onClick="accessLink"
+        android:background="#FFFFFF">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Click here"
-            android:onClick="accessLink"/>
+            android:onClick="accessLink"
+            android:background="#A68026"
+            android:textColor="#4A3AB3"/>
+    </View>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Click here"
-            android:onClick="accessLink"/>
-    </LinearLayout>
 
 </LinearLayout>

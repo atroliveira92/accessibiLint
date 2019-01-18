@@ -44,15 +44,6 @@ public class BackgroundNoClickDetector extends ResourceXmlDetector {
             WARNING,
             new Implementation(BackgroundNoClickDetector.class, RESOURCE_FILE_SCOPE));
 
-    public static final Issue ISSUE_BACKGROUND_COLOR_CONTRAST_RATIO = Issue.create(
-            "BackgroundColorContrast",
-            "Avoid make the background view clickable",
-            "Evitar a exigência de realizar toques no plano de fundo do aplicativo para realizar determinada ação, ou seja, fora dos componentes de interface",
-            A11Y,
-            6,
-            WARNING,
-            new Implementation(BackgroundNoClickDetector.class, RESOURCE_FILE_SCOPE));
-
     @Override
     public boolean appliesTo(ResourceFolderType folderType) {
         return EnumSet.of(LAYOUT).contains(folderType);

@@ -30,10 +30,10 @@ public class ContrastCalculatorUtils {
     /* */
     private static final int ROUND_VALUE = 100000;
 
-    public static boolean isContrastInValid(String textColor, String backgroundColor, double contrastMinRatio) {
+    public static double getConstrastRatio(String textColor, String backgroundColor) {
         Color fgColor = Color.decode(textColor);
         Color bgColor = Color.decode(backgroundColor);
-        return getConstrastRatio(fgColor, bgColor) < contrastMinRatio;
+        return getConstrastRatio(fgColor, bgColor);
     }
 
     /**

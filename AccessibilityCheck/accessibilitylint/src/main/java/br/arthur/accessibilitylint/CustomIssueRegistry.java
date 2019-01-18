@@ -20,6 +20,7 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(BackgroundNoClickDetector.ISSUE_NO_CLICK_ON_BACKGROUND_VIEW);
                 add(ContrastRatioDetector.ISSUE_COLOR_CONTRAST_RATIO);
                 add(ToolbarOnScrollDetector.ISSUE_TOOLBAR_SCROLL_VIEW);
+                add(SliderVerifyDetector.ISSUE_AVOID_SLIDERS);
             }
         };
     }

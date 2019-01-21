@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.EnumSet;
 
 import static com.android.SdkConstants.ANDROID_URI;
+import static com.android.SdkConstants.ATTR_CLICKABLE;
 import static com.android.SdkConstants.ATTR_LAYOUT_HEIGHT;
 import static com.android.SdkConstants.ATTR_LAYOUT_MIN_HEIGHT;
 import static com.android.SdkConstants.ATTR_LAYOUT_MIN_WIDTH;
@@ -62,18 +63,26 @@ public class TouchTargetSizeDetector extends ResourceXmlDetector {
         Element element = attribute.getOwnerElement();
         Attr attr = element.getAttributeNodeNS(ANDROID_URI, ATTR_ON_CLICK);
 
-        if(attr == null || attribute.getValue().startsWith("@") || attribute.getValue().equals(SdkConstants.VALUE_MATCH_PARENT)) {
+        if(attr == null) {
+            attr = element.getAttributeNodeNS(ANDROID_URI, ATTR_CLICKABLE);
+            if(attr != null && "false".equalsIgnoreCase(attr.getValue()))
+                return;
+        }
+
+        if(attr == null || attribute.getValue().startsWith("@")) {
             return;
         }
 
-        if(attribute.getValue().equals(SdkConstants.VALUE_WRAP_CONTENT)) {
+        if(attribute.getValue().equals(SdkConstants.VALUE_WRAP_CONTENT) ||
+                attribute.getValue().equals(SdkConstants.VALUE_MATCH_PARENT)) {
+
             if(attribute.getName().endsWith(ATTR_LAYOUT_WIDTH)) {
                 attr = element.getAttributeNodeNS(ANDROID_URI, ATTR_MIN_WIDTH);
                 if(attr != null) {
                     checkAndReportValue(attr, context);
                 } else {
                     context.report(ISSUE_TOUCH_TARGET_VIEW, attribute, context.getValueLocation(attribute),
-                            "If using wrap_content, also implement android:"+ATTR_LAYOUT_MIN_WIDTH+" with at least "+MIN_VALUE_FOR_TOUCH_DP + "dp");
+                            "If using wrap_content or match_parent, also implement android:"+ATTR_LAYOUT_MIN_WIDTH+" with at least "+MIN_VALUE_FOR_TOUCH_DP + "dp");
                 }
             } else if(attribute.getName().endsWith(ATTR_LAYOUT_HEIGHT)) {
                 attr = element.getAttributeNodeNS(ANDROID_URI, ATTR_MIN_HEIGHT);
@@ -81,7 +90,7 @@ public class TouchTargetSizeDetector extends ResourceXmlDetector {
                     checkAndReportValue(attr, context);
                 } else {
                     context.report(ISSUE_TOUCH_TARGET_VIEW, attribute, context.getValueLocation(attribute),
-                            "If using wrap_content, also implement android:"+ATTR_LAYOUT_MIN_HEIGHT+" with at least "+MIN_VALUE_FOR_TOUCH_DP+"dp");
+                            "If using wrap_content or match_parent, also implement android:"+ATTR_LAYOUT_MIN_HEIGHT+" with at least "+MIN_VALUE_FOR_TOUCH_DP+"dp");
                 }
             }
         } else if(attribute.getValue().endsWith("dp")) {

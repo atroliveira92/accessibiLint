@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.List;
 
+import static com.android.SdkConstants.ATTR_CLICKABLE;
 import static com.android.SdkConstants.ATTR_ON_CLICK;
 import static com.android.SdkConstants.ATTR_TEXT;
 import static com.android.resources.ResourceFolderType.LAYOUT;
@@ -55,6 +56,7 @@ public class LinkMissingExplanationIssue extends ResourceXmlDetector {
         List<String> arrayList = new ArrayList<>();
         arrayList.add(ATTR_TEXT);
         arrayList.add(ATTR_ON_CLICK);
+        arrayList.add(ATTR_CLICKABLE);
         return arrayList;
     }
 
@@ -62,7 +64,8 @@ public class LinkMissingExplanationIssue extends ResourceXmlDetector {
     public void visitAttribute(@NonNull final XmlContext context, @NonNull final Attr attribute) {
         if (attribute.getName().equals("android:" + ATTR_TEXT))
             text = LintUtils.stripIdPrefix(attribute.getValue());
-        else {
+        else if(attribute.getName().equals("android:"+ATTR_ON_CLICK) ||
+                (attribute.getName().equals("android:"+ATTR_CLICKABLE) && "true".equalsIgnoreCase(attribute.getValue()))){
             onClick = LintUtils.stripIdPrefix(attribute.getValue());
         }
 

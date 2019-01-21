@@ -24,7 +24,7 @@ import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
 import static com.android.tools.lint.detector.api.Severity.WARNING;
 
-public class LinkMissingExplanationIssue extends ResourceXmlDetector {
+public class LinkMissingExplanationDetector extends ResourceXmlDetector {
     private static final String EXPLANATION_MESSAGE = "LALO According to Siebra et al. (2017) and Gomes (2018)," +
             " when there are inappropriately labeled links, such as example, " +
             "\"click here\", \"access here\" ou \"link\", a visual impairment user may not be able" +
@@ -39,7 +39,7 @@ public class LinkMissingExplanationIssue extends ResourceXmlDetector {
             4,
             WARNING,
             new Implementation(
-                    LinkMissingExplanationIssue.class,
+                    LinkMissingExplanationDetector.class,
                     RESOURCE_FILE_SCOPE));
 
     private String text;

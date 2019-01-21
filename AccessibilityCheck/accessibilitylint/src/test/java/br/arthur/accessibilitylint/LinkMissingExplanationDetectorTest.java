@@ -8,21 +8,18 @@ import com.android.tools.lint.detector.api.Issue;
 import java.util.Collections;
 import java.util.List;
 
-import br.arthur.accessibilitylint.LinkMissingExplanationIssue;
-
-import static br.arthur.accessibilitylint.LinkMissingExplanationIssue.LINK_WITHOUT_RIGHT_EXPLANATION;
-import static br.arthur.accessibilitylint.ImportantActionOnMenuIssue.ISSUE_IMPORTANT_ACTION_ON_MENU;
+import static br.arthur.accessibilitylint.LinkMissingExplanationDetector.LINK_WITHOUT_RIGHT_EXPLANATION;
 
 /**
  * Created by arthu on 29/04/2018.
  *
  */
-public class LinkMissingExplanationIssueTest extends LintDetectorTest{
+public class LinkMissingExplanationDetectorTest extends LintDetectorTest{
 
 
     @Override
     protected Detector getDetector() {
-        return new LinkMissingExplanationIssue();
+        return new LinkMissingExplanationDetector();
     }
 
     @Override

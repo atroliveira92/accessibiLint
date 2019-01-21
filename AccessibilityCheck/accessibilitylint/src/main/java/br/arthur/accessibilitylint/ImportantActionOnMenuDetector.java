@@ -23,7 +23,7 @@ import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
 import static com.android.tools.lint.detector.api.Severity.WARNING;
 
-public class ImportantActionOnMenuIssue extends ResourceXmlDetector {
+public class ImportantActionOnMenuDetector extends ResourceXmlDetector {
 
     public static final Issue ISSUE_IMPORTANT_ACTION_ON_MENU = Issue.create(
             "TestActionOnMenu",
@@ -33,7 +33,7 @@ public class ImportantActionOnMenuIssue extends ResourceXmlDetector {
             4,
             WARNING,
             new Implementation(
-                    ImportantActionOnMenuIssue.class,
+                    ImportantActionOnMenuDetector.class,
                     RESOURCE_FILE_SCOPE));
 
     private String action;

@@ -21,6 +21,7 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(ContrastRatioDetector.ISSUE_COLOR_CONTRAST_RATIO);
                 add(ToolbarOnScrollDetector.ISSUE_TOOLBAR_SCROLL_VIEW);
                 add(SliderVerifyDetector.ISSUE_AVOID_SLIDERS);
+                add(TouchTargetSizeDetector.ISSUE_TOUCH_TARGET_VIEW);
             }
         };
     }

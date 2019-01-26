@@ -175,7 +175,7 @@ public class BackgroundNoClickDetector extends ResourceXmlDetector {
         if (hasChildOnClick) {
             context.report(ISSUE_NO_CLICK_ON_BACKGROUND_VIEW, element,
                     context.getValueLocation(attr),
-                    "Avoid make the background view clickable");
+                    "ALALALAAvoid make the background view clickable");
         }
     }
 }

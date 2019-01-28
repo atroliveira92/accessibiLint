@@ -1,4 +1,4 @@
-<br.arthur.accessibilitylint.resources>
+<resources>
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -17,4 +17,4 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
-</br.arthur.accessibilitylint.resources>
+</resources>

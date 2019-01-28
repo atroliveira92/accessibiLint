@@ -24,6 +24,10 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(SliderVerifyDetector.ISSUE_AVOID_SWIPEREFRESHLAYOUT);
                 add(TouchTargetSizeDetector.ISSUE_TOUCH_TARGET_VIEW);
                 add(RedirectOutContextDetector.ISSUE_REDIRECT_OUT_OF_CONTEXT);
+                add(TitleActivityDetector.ISSUE_TITLE_ACTIVITY);
+                add(EditTextDetector.ISSUE_AWAYS_IMPLEMENT_INPUTTEXT);
+                add(EditTextDetector.ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW);
+                add(DuplicateTextsInLayoutDetector.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
             }
         };
     }

@@ -38,16 +38,16 @@ public class DuplicateTextsInLayoutDetector extends ResourceXmlDetector {
             WARNING,
             new Implementation(DuplicateTextsInLayoutDetector.class, RESOURCE_FILE_SCOPE));
 
-    private List<String> contentDescriptionValues;
+    private List<String> titles;
 
     @Override
     public void beforeCheckFile(Context context) {
-        contentDescriptionValues = new ArrayList<>();
+        titles = new ArrayList<>();
     }
 
     @Override
     public void afterCheckFile(Context context) {
-        contentDescriptionValues = null;
+        titles = null;
     }
 
     @Override
@@ -59,16 +59,16 @@ public class DuplicateTextsInLayoutDetector extends ResourceXmlDetector {
     @Nullable
     @Override
     public Collection<String> getApplicableAttributes() {
-        return Arrays.asList(SdkConstants.ATTR_CONTENT_DESCRIPTION);
+        return Arrays.asList(SdkConstants.ATTR_CONTENT_DESCRIPTION, SdkConstants.ATTR_TITLE);
     }
 
     @Override
     public void visitAttribute(XmlContext context, Attr attribute) {
         String value = attribute.getValue();
-        if(contentDescriptionValues.contains(value)) {
-            context.report(ISSUE_DUPLICATE_TEXTS_IN_LAYOUT, attribute, context.getValueLocation(attribute), "Avoid use same contentDescripton, provide more info for each contentDescription");
+        if(titles.contains(value)) {
+            context.report(ISSUE_DUPLICATE_TEXTS_IN_LAYOUT, attribute, context.getValueLocation(attribute), "Avoid use same texts on layout. If need, provide a diferent contentDescription to differ the element");
         } else {
-            contentDescriptionValues.add(value);
+            titles.add(value);
         }
     }
 }

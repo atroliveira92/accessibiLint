@@ -35,8 +35,7 @@
             android:layout_height="wrap_content"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:text="Click here"
-            android:clickable="true"
+            android:text="CEP"
             android:focusable="true"
             android:textColor="#A68026"/>
 

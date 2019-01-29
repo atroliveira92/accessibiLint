@@ -12,7 +12,6 @@ import org.w3c.dom.Attr;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -21,11 +20,11 @@ import br.arthur.accessibilitylint.DetectorRule;
 import static com.android.resources.ResourceFolderType.LAYOUT;
 
 public class TextDetector extends ResourceXmlDetector {
-
     private List<DetectorRule> rules;
 
+    @SuppressWarnings("WeakerAccess") //Need to be public
     public TextDetector() {
-        rules = Collections.singletonList(new DuplicatedTextRule());
+        rules = Arrays.asList(new DuplicatedTextRule(), new SpacedWordsRule());
     }
 
     @Override

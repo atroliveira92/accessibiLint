@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.arthur.accessibilitylint.text.DuplicatedTextRule;
+import br.arthur.accessibilitylint.text.SpacedWordsRule;
 
 public class CustomIssueRegistry extends IssueRegistry {
 
@@ -30,6 +31,7 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(EditTextDetector.ISSUE_AWAYS_IMPLEMENT_INPUTTEXT);
                 add(EditTextDetector.ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW);
                 add(DuplicatedTextRule.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
+                add(SpacedWordsRule.ISSUE_SPACED_WORDS);
             }
         };
     }

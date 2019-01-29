@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF"
-    android:clickable="true">
+    android:background="#FFFFFF">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,7 +13,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:clickable="true">
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
@@ -39,6 +39,15 @@
             android:focusable="true"
             android:textColor="#A68026"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="CEP"
+                android:focusable="true"
+                android:textColor="#A68026"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,7 +56,8 @@
             android:text="Click here"
             android:onClick="accessLink"
             android:textColor="#A68026"
-            android:background="#4A3AB3"/>
+            android:background="#4A3AB3"
+            android:layout_margin="5dp"/>
 
             <SeekBar
                 android:layout_width="match_parent"

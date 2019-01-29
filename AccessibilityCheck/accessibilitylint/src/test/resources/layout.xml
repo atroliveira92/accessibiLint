@@ -18,7 +18,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_margin="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -30,11 +31,13 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minHeight="30dp"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
                 android:text="Click here"
                 android:onClick="accessLink"
                 android:textColor="#A68026"
-                android:background="#4A3AB3"/>
+                android:background="#4A3AB3"
+                android:layout_margin="3dp"/>
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"

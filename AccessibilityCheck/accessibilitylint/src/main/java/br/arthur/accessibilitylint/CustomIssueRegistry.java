@@ -27,7 +27,7 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(TitleActivityDetector.ISSUE_TITLE_ACTIVITY);
                 add(EditTextDetector.ISSUE_AWAYS_IMPLEMENT_INPUTTEXT);
                 add(EditTextDetector.ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW);
-                add(DuplicateTextsInLayoutDetector.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
+                add(TextDetector.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
             }
         };
     }

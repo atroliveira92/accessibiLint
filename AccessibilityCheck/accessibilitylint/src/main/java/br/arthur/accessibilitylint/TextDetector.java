@@ -22,13 +22,7 @@ import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
 import static com.android.tools.lint.detector.api.Severity.WARNING;
 
-/**
- * Created by arthu on 26/01/2019.
- *
- */
-
-public class DuplicateTextsInLayoutDetector extends ResourceXmlDetector {
-
+public class TextDetector extends ResourceXmlDetector {
     public static final Issue ISSUE_DUPLICATE_TEXTS_IN_LAYOUT = Issue.create(
             "DuplicateTextInLayout",
             "Avoid make the background view clickable",
@@ -36,7 +30,7 @@ public class DuplicateTextsInLayoutDetector extends ResourceXmlDetector {
             A11Y,
             6,
             WARNING,
-            new Implementation(DuplicateTextsInLayoutDetector.class, RESOURCE_FILE_SCOPE));
+            new Implementation(TextDetector.class, RESOURCE_FILE_SCOPE));
 
     private List<String> titles;
 

@@ -18,6 +18,7 @@ import java.util.List;
 
 import static com.android.SdkConstants.ANDROID_URI;
 import static com.android.SdkConstants.ATTR_BACKGROUND;
+import static com.android.SdkConstants.ATTR_CLICKABLE;
 import static com.android.SdkConstants.ATTR_ON_CLICK;
 import static com.android.SdkConstants.FRAME_LAYOUT;
 import static com.android.SdkConstants.LINEAR_LAYOUT;
@@ -149,21 +150,32 @@ public class BackgroundNoClickDetector extends ResourceXmlDetector {
 
         boolean hasChildOnClick = false;
         Attr attr = element.getAttributeNodeNS(ANDROID_URI, ATTR_ON_CLICK);
+        if (attr == null) {
+            attr = element.getAttributeNodeNS(ANDROID_URI, ATTR_CLICKABLE);
+            if (attr != null && "false".equalsIgnoreCase(attr.getValue())) {
+                return;
+            }
+        }
+
         if (element.hasChildNodes() && attr != null) {
             for (Element child : LintUtils.getChildren(element)) {
                 Attr attrOnClick = child.getAttributeNodeNS(ANDROID_URI, ATTR_ON_CLICK);
-                if(attrOnClick != null) {
+                if (attrOnClick != null) {
                     hasChildOnClick = true;
                     break;
+                } else {
+                    attrOnClick = element.getAttributeNodeNS(ANDROID_URI, ATTR_CLICKABLE);
+                    if (attrOnClick != null && "true".equalsIgnoreCase(attrOnClick.getValue())) {
+                        hasChildOnClick = true;
+                        break;
+                    }
                 }
             }
         }
         if (hasChildOnClick) {
             context.report(ISSUE_NO_CLICK_ON_BACKGROUND_VIEW, element,
                     context.getValueLocation(attr),
-                    "HIHIAvoid make the background view clickable");
+                    "ALALALAAvoid make the background view clickable");
         }
     }
-
-
 }

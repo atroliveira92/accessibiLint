@@ -1,8 +1,12 @@
 package br.arthur.accessibilitycheck;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -11,6 +15,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +33,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        //getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -48,5 +54,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void accessLink(View view) {
+//        String url = "http://www.stackoverflow.com";
+        //intent = new Intent(Intent.ACTION_VIEW);
+        intent = new Intent(this, LoginActivity.class);
+  //      intent.setData(Uri.parse(url));
+        startActivity(intent);
     }
 }

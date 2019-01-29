@@ -57,6 +57,20 @@ public class ContrastRatioDetector extends ResourceXmlDetector {
         return Arrays.asList(ATTR_TEXT_COLOR, ATTR_BACKGROUND);
     }
 
+    private Attr searchForParentBackgroundAttribute(Node element) {
+        Node parentNode = element.getParentNode();
+        if(parentNode == null || parentNode.getNodeType() != Node.ELEMENT_NODE)
+            return null;
+        else {
+            Element elementParent = (Element) parentNode;
+            Attr attrBackgroundColor = elementParent.getAttributeNodeNS(ANDROID_URI, ATTR_BACKGROUND);
+            if(attrBackgroundColor != null)
+                return attrBackgroundColor;
+        }
+        return searchForParentBackgroundAttribute(parentNode);
+    }
+
+
     @Override
     public void visitAttribute(XmlContext context, Attr attribute) {
 
@@ -65,16 +79,16 @@ public class ContrastRatioDetector extends ResourceXmlDetector {
             Element element = attribute.getOwnerElement();
             Attr attrBackgroundColor = element.getAttributeNodeNS(ANDROID_URI, ATTR_BACKGROUND);
             if(attrBackgroundColor == null) {
-                Node parentNode = element.getParentNode();
-                if(parentNode != null && parentNode.getNodeType() == Node.ELEMENT_NODE) {
-                    Element elementParent = (Element) parentNode;
-                    attrBackgroundColor = elementParent.getAttributeNodeNS(ANDROID_URI, ATTR_BACKGROUND);
-                    if(attrBackgroundColor != null){
-                        reportIssue(element, attrBackgroundColor, attribute,
-                                "Text color and parent background color contrast ratio is ", context);
-                    }
-
+//                Node parentNode = element.getParentNode();
+//                if(parentNode != null && parentNode.getNodeType() == Node.ELEMENT_NODE) {
+//                    Element elementParent = (Element) parentNode;
+                    //attrBackgroundColor = elementParent.getAttributeNodeNS(ANDROID_URI, ATTR_BACKGROUND);
+                attrBackgroundColor = searchForParentBackgroundAttribute(element);
+                if(attrBackgroundColor != null){
+                    reportIssue(element, attrBackgroundColor, attribute,
+                            "Text color and parent background color contrast ratio is ", context);
                 }
+                //}
             } else {
                 reportIssue(element, attrBackgroundColor, attribute,
                         "Text color and background color contrast ratio is ", context);

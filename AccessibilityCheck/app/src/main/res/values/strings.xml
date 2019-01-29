@@ -1,4 +1,4 @@
-<br.arthur.accessibilitylint.resources>
+<resources>
     <string name="app_name">AccessibilityCheck</string>
     <string name="action_settings">Settings</string>
-</br.arthur.accessibilitylint.resources>
+</resources>

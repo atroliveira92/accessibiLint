@@ -49,7 +49,7 @@ public class TextDetector extends ResourceXmlDetector {
     @Nullable
     @Override
     public Collection<String> getApplicableAttributes() {
-        return Arrays.asList(SdkConstants.ATTR_CONTENT_DESCRIPTION, SdkConstants.ATTR_TITLE);
+        return Arrays.asList(SdkConstants.ATTR_CONTENT_DESCRIPTION, SdkConstants.ATTR_TEXT);
     }
 
     @Override

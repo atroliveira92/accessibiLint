@@ -8,6 +8,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.arthur.accessibilitylint.text.DuplicatedTextRule;
+import br.arthur.accessibilitylint.text.SpacedWordsRule;
+
 public class CustomIssueRegistry extends IssueRegistry {
 
     @NotNull
@@ -27,8 +30,9 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(TitleActivityDetector.ISSUE_TITLE_ACTIVITY);
                 add(EditTextDetector.ISSUE_AWAYS_IMPLEMENT_INPUTTEXT);
                 add(EditTextDetector.ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW);
-                add(DuplicateTextsInLayoutDetector.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
                 add(BorderComponentDetector.ISSUE_BORDER_COMPONENT_DETECTOR);
+                add(DuplicatedTextRule.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
+                add(SpacedWordsRule.ISSUE_SPACED_WORDS);
             }
         };
     }

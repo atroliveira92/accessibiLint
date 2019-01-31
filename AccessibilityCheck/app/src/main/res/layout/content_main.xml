@@ -13,8 +13,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
             android:orientation="vertical"
-            android:clickable="true">
+            android:paddingStart="6dp"
+            android:paddingEnd="2dp">
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
@@ -26,38 +28,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
                     android:background="?attr/colorPrimary"
+                    android:clickable="true"
                     app:popupTheme="@style/AppTheme.PopupOverlay" />
 
             </android.support.design.widget.AppBarLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:text="CEP"
-            android:focusable="true"
-            android:textColor="#A68026"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
+                android:text="CEP"
+                android:textColor="#A68026" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:text="CEP"
                 android:focusable="true"
-                android:textColor="#A68026"/>
+                android:minHeight="48dp"
+                android:minWidth="48dp"
+                android:text="CEP"
+                android:textColor="#A68026" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="48dp"
-            android:minHeight="48dp"
-            android:text="Click here"
-            android:onClick="accessLink"
-            android:textColor="#A68026"
-            android:background="#4A3AB3"
-            android:layout_margin="5dp"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="2dp"
+                android:background="#4A3AB3"
+                android:minHeight="48dp"
+                android:minWidth="48dp"
+                android:onClick="accessLink"
+                android:text="Click here"
+                android:textColor="#A68026" />
 
             <SeekBar
                 android:layout_width="match_parent"

@@ -21,6 +21,7 @@ import java.util.EnumSet;
 import java.util.List;
 
 import static com.android.SdkConstants.ANDROID_URI;
+import static com.android.SdkConstants.ATTR_CLICKABLE;
 import static com.android.SdkConstants.ATTR_LAYOUT_MARGIN;
 import static com.android.SdkConstants.ATTR_LAYOUT_MARGIN_BOTTOM;
 import static com.android.SdkConstants.ATTR_LAYOUT_MARGIN_END;
@@ -40,17 +41,14 @@ import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
 import static com.android.tools.lint.detector.api.Severity.WARNING;
 
-/**
- * Created by arthu on 28/01/2019.
- */
 
 public class BorderComponentDetector extends ResourceXmlDetector {
 
-    private int MIN_MARGIN = 8;
+    private static final int MIN_MARGIN = 8;
 
     static final Issue ISSUE_BORDER_COMPONENT_DETECTOR = Issue.create(
             "BorderComponentIssue",
-            "It seams this possible clicable object is to close to other object or the screen border, provide at least 8 dp margin",
+            "It seams this possible clicable object is to close to other object or the screen border, provide at least 8dp margin",
             "Evitar a exigência de realizar toques no plano de fundo do aplicativo para realizar determinada ação, ou seja, fora dos componentes de interface",
             A11Y,
             6,
@@ -75,8 +73,7 @@ public class BorderComponentDetector extends ResourceXmlDetector {
     public Collection<String> getApplicableElements() {
         return Arrays.asList(SdkConstants.BUTTON,
                 SdkConstants.IMAGE_BUTTON,
-                SdkConstants.IMAGE_VIEW,
-                SdkConstants.TEXT_VIEW);
+                SdkConstants.IMAGE_VIEW);
     }
 
     @Override
@@ -99,6 +96,9 @@ public class BorderComponentDetector extends ResourceXmlDetector {
 
     @Override
     public void visitAttribute(XmlContext context, Attr attribute) {
+        if(attribute.getLocalName().equals(ATTR_CLICKABLE) && attribute.getValue().equals("false"))
+            return;
+
         Element element = attribute.getOwnerElement();
         if(!lstElementsVisited.contains(element)) {
             checkMargin(context, element);
@@ -108,68 +108,71 @@ public class BorderComponentDetector extends ResourceXmlDetector {
 
     private void checkMargin(XmlContext context, Element element) {
         Attr attrMargin = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN);
+        Attr attrMarginLeft = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_LEFT);
+        if(attrMarginLeft == null)
+            attrMarginLeft = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_START);
 
-//        Attr attrMarginRight = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_RIGHT);
-//        if(attrMarginRight == null)
-//            attrMarginRight = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_END);
-//
-//        Attr attrMarginTop = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_TOP);
-//        Attr attrMarginBottom = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_BOTTOM);
+        Attr attrMarginRight = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_RIGHT);
+        if(attrMarginRight == null)
+            attrMarginRight = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_END);
 
-        int margin = loadValueFromAttribute(attrMargin);
-        if (margin < MIN_MARGIN) {
-            int parentMargin = getParentMarginOrPadding(element, margin);
-            if(parentMargin)
+        Attr attrMarginTop = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_TOP);
+        Attr attrMarginBottom = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_BOTTOM);
+
+        if(attrMargin != null) {
+            int margin = loadValueFromAttribute(attrMargin);
+            int parentMargins = getMarginOrPaddingOfParents(element);
+
+            checkAndReport(margin + parentMargins, context, element);
+        } else if(attrMarginLeft != null){
+            int margin = loadValueFromAttribute(attrMarginLeft);
+            int parentMargins = getParentMarginOrPadding(element, 0);
+            int parentMarginLeft = getParentMarginOrPaddingLeft(element, 0);
+
+            checkAndReport(margin + parentMargins + parentMarginLeft, context, element);
+
+        } else if(attrMarginRight != null) {
+            int margin = loadValueFromAttribute(attrMarginRight);
+            int parentMargin = getParentMarginOrPadding(element, 0);
+            int parentMarginRight = getParentMarginOrPaddingRight(element, 0);
+
+            checkAndReport(margin + parentMargin + parentMarginRight, context, element);
+        } else if(attrMarginTop != null) {
+            int margin = loadValueFromAttribute(attrMarginTop);
+            int parentMargin = getParentMarginOrPadding(element, 0);
+            int parentMarginTop = getParentMarginOrPaddingTop(element, 0);
+
+            checkAndReport(margin + parentMargin + parentMarginTop, context, element);
+        } else if(attrMarginBottom != null) {
+            int margin = loadValueFromAttribute(attrMarginBottom);
+            int parentMargin = getParentMarginOrPadding(element, 0);
+            int parentMarginBottom = getParentMarginOrPaddingTop(element, 0);
+
+            checkAndReport(margin + parentMargin + parentMarginBottom, context, element);
         }
-
-        int parentMargin = getParentMarginOrPadding(element, margin);
-        if(checkAndReport(parentMargin, context, element))
-            return;
-        //As the value of element is margin (it can be left, right, bottom or top) it should also check for
-        //each specific attributes of margins or padding in parents
-        int parentMarginLeft = getParentMarginOrPaddingLeft(element, margin);
-        if(checkAndReport(parentMarginLeft, context, element))
-            return;
-        int parentMarginRight = getParentMarginOrPaddingRight(element, margin);
-        if(checkAndReport(parentMarginRight, context, element))
-            return;
-
-        int parentMarginTop = getParentMarginOrPaddingTop(element, margin);
-        if(checkAndReport(parentMarginTop, context, element))
-            return;
-
-        int parentMarginBottom = getParentMarginOrPaddingBottom(element, margin);
-        if(checkAndReport(parentMarginBottom, context, element))
-            return;
-
-
-//        if(!issueFound) { // Check the left margin or padding of element and its parents
-//            Attr attrMarginLeft = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_LEFT);
-//            if(attrMarginLeft == null)
-//                attrMarginLeft = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_START);
-//            if (attrMarginLeft != null) {
-//                int margin = loadValueFromAttribute(attrMarginLeft);
-//
-//                int parentMargin = getParentMarginOrPaddingLeft(element, margin);
-//                checkAndReport(parentMargin, context, element);
-//            } else {
-//                int value = getParentMarginOrPaddingLeft(element, 0);
-//                checkAndReport(value, context, element);
-//            }
-//        }
+        else {
+            int parentMargin = getMarginOrPaddingOfParents(element);
+            checkAndReport(parentMargin, context, element);
+        }
     }
 
-    private boolean checkAndReport(int value, XmlContext context, Element element) {
+    private int getMarginOrPaddingOfParents(Element element) {
+        int parentMargin = getParentMarginOrPadding(element, 0);
+        int parentMarginTop = getParentMarginOrPaddingTop(element, 0);
+        int parentMarginLeft = getParentMarginOrPaddingLeft(element, 0);
+        int parentMarginRight = getParentMarginOrPaddingRight(element, 0);
+        int parentMarginBottom = getParentMarginOrPaddingBottom(element, 0);
+
+        return parentMargin + parentMarginTop + parentMarginRight + parentMarginBottom + parentMarginLeft;
+    }
+
+    private void checkAndReport(int value, XmlContext context, Element element) {
         if (value < MIN_MARGIN) {
             context.report(ISSUE_BORDER_COMPONENT_DETECTOR,
                     element,
                     context.getLocation(element),
                     ISSUE_BORDER_COMPONENT_DETECTOR.getBriefDescription(TextFormat.RAW));
-
-            return true;
         }
-
-        return false;
     }
 
     private int getParentMarginOrPadding(Element element, int marginValue) {
@@ -196,13 +199,13 @@ public class BorderComponentDetector extends ResourceXmlDetector {
         Element parentElement = (Element) parentNode;
 
         Attr attrMarginLeft = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_LEFT);
-        if(attrMarginLeft != null)
+        if(attrMarginLeft == null)
             attrMarginLeft = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_START);
 
         int vMargin = loadValueFromAttribute(attrMarginLeft);
 
         Attr attrPaddingLeft = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_PADDING_LEFT);
-        if(attrPaddingLeft != null)
+        if(attrPaddingLeft == null)
             attrPaddingLeft = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_PADDING_START);
 
         int vPadding = loadValueFromAttribute(attrPaddingLeft);
@@ -218,13 +221,13 @@ public class BorderComponentDetector extends ResourceXmlDetector {
         Element parentElement = (Element) parentNode;
 
         Attr attrMarginRight = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_RIGHT);
-        if(attrMarginRight != null)
+        if(attrMarginRight == null)
             attrMarginRight = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_END);
 
         int vMargin = loadValueFromAttribute(attrMarginRight);
 
         Attr attrPaddingRight = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_PADDING_RIGHT);
-        if(attrPaddingRight != null)
+        if(attrPaddingRight == null)
             attrPaddingRight = parentElement.getAttributeNodeNS(ANDROID_URI, ATTR_PADDING_END);
 
         int vPadding = loadValueFromAttribute(attrPaddingRight);
@@ -274,7 +277,6 @@ public class BorderComponentDetector extends ResourceXmlDetector {
                 return Integer.parseInt(value);
             }
         }
-
         return 0;
     }
 }

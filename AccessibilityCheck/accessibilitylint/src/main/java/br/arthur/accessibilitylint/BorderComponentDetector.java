@@ -108,6 +108,7 @@ public class BorderComponentDetector extends ResourceXmlDetector {
 
     private void checkMargin(XmlContext context, Element element) {
         Attr attrMargin = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN);
+
         Attr attrMarginLeft = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_LEFT);
         if(attrMarginLeft == null)
             attrMarginLeft = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_START);
@@ -119,54 +120,51 @@ public class BorderComponentDetector extends ResourceXmlDetector {
         Attr attrMarginTop = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_TOP);
         Attr attrMarginBottom = element.getAttributeNodeNS(ANDROID_URI, ATTR_LAYOUT_MARGIN_BOTTOM);
 
-        if(attrMargin != null) {
-            int margin = loadValueFromAttribute(attrMargin);
-            int parentMargins = getMarginOrPaddingOfParents(element);
-
-            checkAndReport(margin + parentMargins, context, element);
-        } else if(attrMarginLeft != null){
-            int margin = loadValueFromAttribute(attrMarginLeft);
-            int parentMargins = getParentMarginOrPadding(element, 0);
-            int parentMarginLeft = getParentMarginOrPaddingLeft(element, 0);
-
-            checkAndReport(margin + parentMargins + parentMarginLeft, context, element);
-
-        } else if(attrMarginRight != null) {
-            int margin = loadValueFromAttribute(attrMarginRight);
-            int parentMargin = getParentMarginOrPadding(element, 0);
-            int parentMarginRight = getParentMarginOrPaddingRight(element, 0);
-
-            checkAndReport(margin + parentMargin + parentMarginRight, context, element);
-        } else if(attrMarginTop != null) {
-            int margin = loadValueFromAttribute(attrMarginTop);
-            int parentMargin = getParentMarginOrPadding(element, 0);
-            int parentMarginTop = getParentMarginOrPaddingTop(element, 0);
-
-            checkAndReport(margin + parentMargin + parentMarginTop, context, element);
-        } else if(attrMarginBottom != null) {
-            int margin = loadValueFromAttribute(attrMarginBottom);
-            int parentMargin = getParentMarginOrPadding(element, 0);
-            int parentMarginBottom = getParentMarginOrPaddingTop(element, 0);
-
-            checkAndReport(margin + parentMargin + parentMarginBottom, context, element);
-        }
-        else {
-            int parentMargin = getMarginOrPaddingOfParents(element);
-            checkAndReport(parentMargin, context, element);
-        }
-    }
-
-    private int getMarginOrPaddingOfParents(Element element) {
         int parentMargin = getParentMarginOrPadding(element, 0);
         int parentMarginTop = getParentMarginOrPaddingTop(element, 0);
         int parentMarginLeft = getParentMarginOrPaddingLeft(element, 0);
         int parentMarginRight = getParentMarginOrPaddingRight(element, 0);
         int parentMarginBottom = getParentMarginOrPaddingBottom(element, 0);
 
-        return parentMargin + parentMarginTop + parentMarginRight + parentMarginBottom + parentMarginLeft;
+        boolean childMarginFound=false;
+
+        if(attrMargin != null) {
+            int margin = loadValueFromAttribute(attrMargin);
+            checkAndReport(margin + parentMargin + parentMarginTop + parentMarginRight
+                    + parentMarginBottom + parentMarginLeft, context, attrMargin);
+
+            childMarginFound = true;
+        }
+        if(attrMarginLeft != null){
+            int margin = loadValueFromAttribute(attrMarginLeft);
+            checkAndReport(margin + parentMargin + parentMarginLeft, context, attrMarginLeft);
+
+            childMarginFound = true;
+        }
+        if(attrMarginRight != null) {
+            int margin = loadValueFromAttribute(attrMarginRight);
+            checkAndReport(margin + parentMargin + parentMarginRight, context, attrMarginRight);
+
+            childMarginFound = true;
+        }
+        if(attrMarginTop != null) {
+            int margin = loadValueFromAttribute(attrMarginTop);
+            checkAndReport(margin + parentMargin + parentMarginTop, context, attrMarginTop);
+
+            childMarginFound = true;
+        }
+        if(attrMarginBottom != null) {
+            int margin = loadValueFromAttribute(attrMarginBottom);
+            checkAndReport(margin + parentMargin + parentMarginBottom, context, attrMarginBottom);
+
+            childMarginFound = true;
+        }
+
+        if(!childMarginFound)
+            checkAndReport(parentMargin, context, element);
     }
 
-    private void checkAndReport(int value, XmlContext context, Element element) {
+    private void checkAndReport(int value, XmlContext context, Node element) {
         if (value < MIN_MARGIN) {
             context.report(ISSUE_BORDER_COMPONENT_DETECTOR,
                     element,

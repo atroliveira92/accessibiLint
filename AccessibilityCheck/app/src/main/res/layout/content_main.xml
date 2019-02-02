@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            android:text="CEP"
+            android:text="@string/app_name"
             android:focusable="true"
             android:textColor="#A68026"/>
 
@@ -49,9 +49,14 @@
             android:textColor="#A68026"
             android:background="#4A3AB3"/>
 
-            <SeekBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"/>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         </LinearLayout>
     </ScrollView>

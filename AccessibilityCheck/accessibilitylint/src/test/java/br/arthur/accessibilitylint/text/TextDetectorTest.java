@@ -41,4 +41,18 @@ public class TextDetectorTest extends LintDetectorTest {
                 .run()
                 .expectWarningCount(1);
     }
+
+    public void testDuplicateTexts() throws FileNotFoundException {
+        URL url = this.getClass().getClassLoader().getResource("layout.xml");
+        @SuppressWarnings("ConstantConditions")
+        File file = new File(url.getPath());
+        @Language("XML")
+        String xmlLayout = new Scanner(file).useDelimiter("\\A").next();
+
+        lint().files(xml("res/layout/layout.xml", xmlLayout))
+                .allowMissingSdk()
+                .issues(ISSUE_DUPLICATE_TEXTS_IN_LAYOUT)
+                .run()
+                .expectWarningCount(1);
+    }
 }

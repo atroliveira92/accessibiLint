@@ -32,6 +32,8 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(EditTextDetector.ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW);
                 add(DuplicatedTextRule.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
                 add(SpacedWordsRule.ISSUE_SPACED_WORDS);
+                add(TooManyInteractableViewsDetector.ISSUE_LIST_ITEM_IN_TOO_MANY_VIEWS_LAYOUT);
+                add(TooManyInteractableViewsDetector.ISSUE_TOO_MANY_INTERACTIONS_VIEW);
             }
         };
     }

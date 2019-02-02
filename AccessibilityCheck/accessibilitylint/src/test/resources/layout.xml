@@ -48,6 +48,16 @@
                 android:onClick="accessLink"
                 android:textColor="#A68026"
                 android:background="#4A3AB3"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"/>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:onClick="accessLink" android:text="C l i c k  h e r e"
+                android:textColor="#A68026" />
 
             <Button
                 android:layout_width="wrap_content"

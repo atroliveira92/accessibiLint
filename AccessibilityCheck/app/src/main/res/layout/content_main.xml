@@ -49,11 +49,45 @@
             android:textColor="#A68026"
             android:background="#4A3AB3"/>
 
-            <SeekBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="Click here"
+            android:onClick="accessLink"
+            android:textColor="#A68026"
+            android:background="#4A3AB3"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"
+                android:background="#4A3AB3"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"
+                android:background="#4A3AB3"/>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         </LinearLayout>
     </ScrollView>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

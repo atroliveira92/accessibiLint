@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:clickable="true">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -14,31 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Click here"
-                android:onClick="accessLink"
-                android:textColor="#A68026"/>
-
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:onClick="accessLink" android:text="C l i c k  h e r e"
-                android:textColor="#A68026" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="30dp"
-                android:text="Click here"
-                android:onClick="accessLink"
-                android:textColor="#A68026"
-                android:background="#4A3AB3"/>
 
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
@@ -54,15 +30,71 @@
 
             </android.support.design.widget.AppBarLayout>
 
-        </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="CEP"
+                android:focusable="true"
+                android:textColor="#A68026"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"
+                android:background="#4A3AB3"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"
+                android:background="#4A3AB3"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"
+                android:background="#4A3AB3"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"
+                android:background="#4A3AB3"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:text="Click here"
+                android:onClick="accessLink"
+                android:textColor="#A68026"
+                android:background="#4A3AB3"/>
+
 
         </LinearLayout>
     </ScrollView>
 
-    <android.support.v4.widget.SwipeRefreshLayout
+    <ListView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

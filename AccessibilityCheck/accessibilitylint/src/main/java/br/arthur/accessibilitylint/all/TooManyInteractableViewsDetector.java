@@ -1,12 +1,7 @@
-package br.arthur.accessibilitylint;
+package br.arthur.accessibilitylint.all;
 
-import com.android.resources.ResourceFolderType;
-import com.android.tools.lint.checks.TooManyViewsDetector;
-import com.android.tools.lint.detector.api.Context;
 import com.android.tools.lint.detector.api.Implementation;
 import com.android.tools.lint.detector.api.Issue;
-import com.android.tools.lint.detector.api.ResourceXmlDetector;
-import com.android.tools.lint.detector.api.TextFormat;
 import com.android.tools.lint.detector.api.XmlContext;
 
 import org.w3c.dom.Attr;
@@ -14,8 +9,6 @@ import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.EnumSet;
 import java.util.List;
 
 import static com.android.SdkConstants.ANDROID_URI;
@@ -28,16 +21,15 @@ import static com.android.SdkConstants.ATTR_TITLE;
 import static com.android.SdkConstants.GRID_VIEW;
 import static com.android.SdkConstants.LIST_VIEW;
 import static com.android.SdkConstants.SPINNER;
-import static com.android.resources.ResourceFolderType.LAYOUT;
 import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
 import static com.android.tools.lint.detector.api.Severity.WARNING;
 
 
 
-public class TooManyInteractableViewsDetector extends ResourceXmlDetector {
+public class TooManyInteractableViewsDetector implements AllLayoutDetectorRule {
 
-    static final Issue ISSUE_TOO_MANY_INTERACTIONS_VIEW =  Issue.create(
+    public static final Issue ISSUE_TOO_MANY_INTERACTIONS_VIEW =  Issue.create(
             "TooManyTouchableViews",
             "Layout has too many views that can be interact and it's bad for visually impairment people. Check your design layout",
             "Using too many views in a single layout is bad for "
@@ -49,9 +41,9 @@ public class TooManyInteractableViewsDetector extends ResourceXmlDetector {
             A11Y,
             5,
             WARNING,
-            new Implementation(TooManyInteractableViewsDetector.class, RESOURCE_FILE_SCOPE));
+            new Implementation(AllLayoutDetector.class, RESOURCE_FILE_SCOPE));
 
-    static final Issue ISSUE_LIST_ITEM_IN_TOO_MANY_VIEWS_LAYOUT = Issue.create(
+    public static final Issue ISSUE_LIST_ITEM_IN_TOO_MANY_VIEWS_LAYOUT = Issue.create(
             "ListWithTooManyViewsLayout",
             "Layout has a list view and layout already has too many interative views. Check if can increase the number of interactive views",
             "The layout already has too many interactive views. With an list View like RecyclerView, GridView or Spinner, the amount of " +
@@ -60,7 +52,7 @@ public class TooManyInteractableViewsDetector extends ResourceXmlDetector {
             A11Y,
             5,
             WARNING,
-            new Implementation(TooManyInteractableViewsDetector.class, RESOURCE_FILE_SCOPE)
+            new Implementation(AllLayoutDetector.class, RESOURCE_FILE_SCOPE)
     );
 
     private static final int MAX_VIEW_COUNT = 10;
@@ -87,18 +79,9 @@ public class TooManyInteractableViewsDetector extends ResourceXmlDetector {
 //        MAX_VIEW_COUNT = maxViewCount;
 //    }
 
-    @Override
-    public boolean appliesTo(ResourceFolderType folderType) {
-        return EnumSet.of(LAYOUT).contains(folderType);
-    }
-
     private int maxCount;
     private List<Element> lstListElements = new ArrayList<>();
 
-    @Override
-    public Collection<String> getApplicableElements() {
-        return ALL;
-    }
 
 
     public void checkList(XmlContext xmlContext) {
@@ -138,8 +121,6 @@ public class TooManyInteractableViewsDetector extends ResourceXmlDetector {
         } else if(attrHint != null) {
             maxCount++;
         }
-
-        TooManyViewsDetector
 
         checkAndReport(context, element);
 

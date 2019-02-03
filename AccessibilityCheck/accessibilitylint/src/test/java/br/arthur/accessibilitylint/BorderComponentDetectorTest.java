@@ -4,7 +4,6 @@ import com.android.tools.lint.checks.infrastructure.LintDetectorTest;
 import com.android.tools.lint.detector.api.Detector;
 import com.android.tools.lint.detector.api.Issue;
 
-import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
     }
 
 
-    public void testChildWithMarginAndParentWithMargin() throws FileNotFoundException {
+    public void testChildWithMarginAndParentWithMargin() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -59,7 +58,7 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .expectWarningCount(1);
     }
 
-    public void testChildWithMarginAndParentWithMarginLeft() throws FileNotFoundException {
+    public void testChildWithMarginAndParentWithMarginLeft() {
         String xmlLayout = "<LinearLayout\n" +
                 "            android:clickable=\"false\"\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
@@ -93,7 +92,7 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .expectWarningCount(1);
     }
 
-    public void testChildWithMarginAndParentWithMarginRight() throws FileNotFoundException {
+    public void testChildWithMarginAndParentWithMarginRight() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -127,7 +126,7 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .expectWarningCount(1);
     }
 
-    public void testChildWithMarginAndParentWithMarginBottom() throws FileNotFoundException {
+    public void testChildWithMarginAndParentWithMarginBottom() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -161,7 +160,7 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .expectWarningCount(1);
     }
 
-    public void testChildWithMarginAndParentWithMarginTop() throws FileNotFoundException {
+    public void testChildWithMarginAndParentWithMarginTop() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -195,7 +194,7 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .expectWarningCount(1);
     }
 
-    public void testChildWithMarginRightAndParentWithMargin() throws FileNotFoundException {
+    public void testChildWithMarginRightAndParentWithMargin() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -226,10 +225,10 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .allowMissingSdk()
                 .issues(ISSUE_BORDER_COMPONENT_DETECTOR)
                 .run()
-                .expectWarningCount(1);
+                .expectWarningCount(2);
     }
 
-    public void testChildWithMarginLeftAndParentWithMargin() throws FileNotFoundException {
+    public void testChildWithMarginLeftAndParentWithMargin() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -260,10 +259,10 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .allowMissingSdk()
                 .issues(ISSUE_BORDER_COMPONENT_DETECTOR)
                 .run()
-                .expectWarningCount(1);
+                .expectWarningCount(2);
     }
 
-    public void testChildWithMarginTopAndParentWithMargin() throws FileNotFoundException {
+    public void testChildWithMarginTopAndParentWithMargin() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -294,10 +293,10 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .allowMissingSdk()
                 .issues(ISSUE_BORDER_COMPONENT_DETECTOR)
                 .run()
-                .expectWarningCount(1);
+                .expectWarningCount(2);
     }
 
-    public void testChildWithMarginBottomAndParentWithMargin() throws FileNotFoundException {
+    public void testChildWithMarginBottomAndParentWithMargin() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -328,10 +327,10 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .allowMissingSdk()
                 .issues(ISSUE_BORDER_COMPONENT_DETECTOR)
                 .run()
-                .expectWarningCount(1);
+                .expectWarningCount(2);
     }
 
-    public void testChildWithoutMarginAndParentWithMargin() throws FileNotFoundException {
+    public void testChildWithoutMarginAndParentWithMargin() {
         String xmlLayout = "<LinearLayout\n" +
                 "            xmlns:android=\"http://schemas.android.com/apk/res/android\"\n" +
                 "            android:clickable=\"false\"\n" +
@@ -362,6 +361,6 @@ public class BorderComponentDetectorTest extends LintDetectorTest {
                 .allowMissingSdk()
                 .issues(ISSUE_BORDER_COMPONENT_DETECTOR)
                 .run()
-                .expectWarningCount(1);
+                .expectWarningCount(2);
     }
 }

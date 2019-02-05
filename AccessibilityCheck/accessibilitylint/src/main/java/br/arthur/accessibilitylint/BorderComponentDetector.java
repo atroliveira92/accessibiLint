@@ -74,7 +74,10 @@ public class BorderComponentDetector extends ResourceXmlDetector {
     public Collection<String> getApplicableElements() {
         return Arrays.asList(SdkConstants.BUTTON,
                 SdkConstants.IMAGE_BUTTON,
-                SdkConstants.IMAGE_VIEW);
+                SdkConstants.IMAGE_VIEW,
+                SdkConstants.RADIO_BUTTON,
+                SdkConstants.RADIO_GROUP,
+                SdkConstants.CHECK_BOX);
     }
 
     @Override

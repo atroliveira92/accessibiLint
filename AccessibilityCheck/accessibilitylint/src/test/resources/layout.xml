@@ -64,6 +64,19 @@
         </LinearLayout>
     </ScrollView>
 
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="33dp"
+        android:background="@color/dark_blue"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:onClick="blabla"/>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_padprent">

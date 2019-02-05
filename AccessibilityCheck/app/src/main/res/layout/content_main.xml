@@ -54,11 +54,10 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="1dp"
                 android:background="#4A3AB3"
-                android:minHeight="48dp"
-                android:minWidth="48dp"
                 android:onClick="accessLink"
                 android:text="Click here"
                 android:textColor="#A68026" />

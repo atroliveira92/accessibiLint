@@ -103,8 +103,23 @@
         </LinearLayout>
     </ScrollView>
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:minWidth="48dp"
+        android:layout_height="48dp"
+        android:clickable="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alo mundo"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher_foreground"/>
+
+    </LinearLayout>
 
 </LinearLayout>

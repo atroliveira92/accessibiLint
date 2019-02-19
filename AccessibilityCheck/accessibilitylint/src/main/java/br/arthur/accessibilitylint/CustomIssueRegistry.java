@@ -8,8 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.arthur.accessibilitylint.text.DuplicatedTextRule;
-import br.arthur.accessibilitylint.text.SpacedWordsRule;
+import br.arthur.accessibilitylint.all.TooManyInteractableViewsDetector;
+import br.arthur.accessibilitylint.all.ViewGroupInteractionDetector;
+import br.arthur.accessibilitylint.text.DuplicatedTextRuleText;
+import br.arthur.accessibilitylint.text.SpacedWordsRuleText;
 
 public class CustomIssueRegistry extends IssueRegistry {
 
@@ -30,10 +32,11 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(TitleActivityDetector.ISSUE_TITLE_ACTIVITY);
                 add(EditTextDetector.ISSUE_AWAYS_IMPLEMENT_INPUTTEXT);
                 add(EditTextDetector.ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW);
-                add(DuplicatedTextRule.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
-                add(SpacedWordsRule.ISSUE_SPACED_WORDS);
+                add(DuplicatedTextRuleText.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
+                add(SpacedWordsRuleText.ISSUE_SPACED_WORDS);
                 add(TooManyInteractableViewsDetector.ISSUE_LIST_ITEM_IN_TOO_MANY_VIEWS_LAYOUT);
                 add(TooManyInteractableViewsDetector.ISSUE_TOO_MANY_INTERACTIONS_VIEW);
+                add(ViewGroupInteractionDetector.ISSUE_VIEWGROUP_CLICKABLE);
             }
         };
     }

@@ -12,8 +12,6 @@ import org.w3c.dom.Element;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.arthur.accessibilitylint.DetectorRule;
-
 import static com.android.SdkConstants.ANDROID_URI;
 import static com.android.SdkConstants.ATTR_CONTENT_DESCRIPTION;
 import static com.android.SdkConstants.ATTR_TEXT;
@@ -21,7 +19,7 @@ import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
 import static com.android.tools.lint.detector.api.Severity.WARNING;
 
-public class DuplicatedTextRule implements DetectorRule {
+public class DuplicatedTextRuleText implements TextDetectorRule {
     public static final Issue ISSUE_DUPLICATE_TEXTS_IN_LAYOUT = Issue.create(
             "DuplicateTextInLayout",
             "Avoid make the background view clickable",
@@ -34,7 +32,7 @@ public class DuplicatedTextRule implements DetectorRule {
     private final List<String> texts;
     private final List<String> contentDescriptions;
 
-    DuplicatedTextRule() {
+    DuplicatedTextRuleText() {
         this.texts = new ArrayList<>();
         this.contentDescriptions = new ArrayList<>();
     }

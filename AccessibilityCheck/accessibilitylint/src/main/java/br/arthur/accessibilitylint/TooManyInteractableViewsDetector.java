@@ -139,8 +139,6 @@ public class TooManyInteractableViewsDetector extends ResourceXmlDetector {
             maxCount++;
         }
 
-        TooManyViewsDetector
-
         checkAndReport(context, element);
 
         String elementName = element.getTagName();

@@ -1,4 +1,4 @@
-package br.arthur.accessibilitylint;
+package br.arthur.accessibilitylint.text;
 
 import com.android.tools.lint.detector.api.Context;
 import com.android.tools.lint.detector.api.XmlContext;
@@ -6,7 +6,7 @@ import com.android.tools.lint.detector.api.XmlContext;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.Attr;
 
-public interface DetectorRule {
+public interface TextDetectorRule {
     void beforeCheckFile(@NotNull Context context);
 
     void afterCheckFile(@NotNull Context context);

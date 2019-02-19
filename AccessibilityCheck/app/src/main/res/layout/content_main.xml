@@ -39,12 +39,15 @@
             android:focusable="true"
             android:textColor="#A68026"/>
 
-            <Button
-                android:layout_width="30dp"
-                android:layout_height="wrap_content"
-                android:onClick="accessLink"
-                android:text="Lucia"
-                android:textColor="#ffff00" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="Click here"
+            android:onClick="accessLink"
+            android:textColor="#A68026"
+            android:background="#4A3AB3"/>
 
 
         <TextView

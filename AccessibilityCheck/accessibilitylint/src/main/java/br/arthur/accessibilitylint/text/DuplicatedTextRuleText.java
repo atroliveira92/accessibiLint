@@ -22,7 +22,7 @@ import static com.android.tools.lint.detector.api.Severity.WARNING;
 public class DuplicatedTextRuleText implements TextDetectorRule {
     public static final Issue ISSUE_DUPLICATE_TEXTS_IN_LAYOUT = Issue.create(
             "DuplicateTextInLayout",
-            "Avoid make the background view clickable",
+            "This view has duplicate texts on text and contentDescription components",
             "Evitar a exigência de realizar toques no plano de fundo do aplicativo para realizar determinada ação, ou seja, fora dos componentes de interface",
             A11Y,
             6,

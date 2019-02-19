@@ -40,7 +40,7 @@ public class TouchTargetSizeDetector extends ResourceXmlDetector {
 
     static final Issue ISSUE_TOUCH_TARGET_VIEW = Issue.create(
             "TouchTargetView",
-            "Avoid make the background view clickable",
+            "Touch target mus have at least "+MIN_VALUE_FOR_TOUCH_DP+"dp in height and width",
             "Evitar a exigência de realizar toques no plano de fundo do aplicativo para realizar determinada ação, ou seja, fora dos componentes de interface",
             A11Y,
             6,

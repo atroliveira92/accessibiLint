@@ -32,7 +32,7 @@ import static com.android.tools.lint.detector.api.Severity.WARNING;
 public class EditTextDetector extends ResourceXmlDetector {
     static final Issue ISSUE_AWAYS_IMPLEMENT_INPUTTEXT = Issue.create(
             "AwaysImplementInputTextIssue",
-            "Provide the android:label attribute",
+            "Aways implement android:inputText",
             "Problemas com a cor do componente",
             A11Y,
             4,
@@ -41,7 +41,7 @@ public class EditTextDetector extends ResourceXmlDetector {
 
     static final Issue ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW = Issue.create(
             "UseAutoCompleteTextViewIssue",
-            "Provide the android:label attribute",
+            "Use autoCompleteTextView insted of regular EditText",
             "Problemas com a cor do componente",
             A11Y,
             2,

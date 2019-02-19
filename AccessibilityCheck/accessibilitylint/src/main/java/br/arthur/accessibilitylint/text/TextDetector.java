@@ -15,27 +15,25 @@ import java.util.Collection;
 import java.util.EnumSet;
 import java.util.List;
 
-import br.arthur.accessibilitylint.DetectorRule;
-
 import static com.android.resources.ResourceFolderType.LAYOUT;
 
 public class TextDetector extends ResourceXmlDetector {
-    private List<DetectorRule> rules;
+    private List<TextDetectorRule> rules;
 
     @SuppressWarnings("WeakerAccess") //Need to be public
     public TextDetector() {
-        rules = Arrays.asList(new DuplicatedTextRule(), new SpacedWordsRule());
+        rules = Arrays.asList(new DuplicatedTextRuleText(), new SpacedWordsRuleText());
     }
 
     @Override
     public void beforeCheckFile(@NotNull Context context) {
-        for (DetectorRule r : rules)
+        for (TextDetectorRule r : rules)
             r.beforeCheckFile(context);
     }
 
     @Override
     public void afterCheckFile(@NotNull Context context) {
-        for (DetectorRule r : rules)
+        for (TextDetectorRule r : rules)
             r.afterCheckFile(context);
     }
 
@@ -53,7 +51,7 @@ public class TextDetector extends ResourceXmlDetector {
 
     @Override
     public void visitAttribute(@NotNull XmlContext context, @NotNull Attr attribute) {
-        for (DetectorRule r : rules)
+        for (TextDetectorRule r : rules)
             r.visitAttribute(context, attribute);
     }
 }

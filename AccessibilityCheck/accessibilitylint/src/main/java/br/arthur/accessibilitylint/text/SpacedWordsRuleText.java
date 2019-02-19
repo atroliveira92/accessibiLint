@@ -12,13 +12,11 @@ import org.w3c.dom.Attr;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import br.arthur.accessibilitylint.DetectorRule;
-
 import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
 import static com.android.tools.lint.detector.api.Severity.WARNING;
 
-public class SpacedWordsRule implements DetectorRule {
+public class SpacedWordsRuleText implements TextDetectorRule {
     /**
      * Check spaced words like "W E L C O M E"
      */

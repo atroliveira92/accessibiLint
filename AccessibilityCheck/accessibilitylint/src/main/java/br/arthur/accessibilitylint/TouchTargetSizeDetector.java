@@ -24,6 +24,10 @@ import static com.android.SdkConstants.ATTR_LAYOUT_WIDTH;
 import static com.android.SdkConstants.ATTR_MIN_HEIGHT;
 import static com.android.SdkConstants.ATTR_MIN_WIDTH;
 import static com.android.SdkConstants.ATTR_ON_CLICK;
+import static com.android.SdkConstants.BUTTON;
+import static com.android.SdkConstants.CHECK_BOX;
+import static com.android.SdkConstants.EDIT_TEXT;
+import static com.android.SdkConstants.RADIO_BUTTON;
 import static com.android.resources.ResourceFolderType.LAYOUT;
 import static com.android.tools.lint.detector.api.Category.A11Y;
 import static com.android.tools.lint.detector.api.Scope.RESOURCE_FILE_SCOPE;
@@ -68,8 +72,13 @@ public class TouchTargetSizeDetector extends ResourceXmlDetector {
             if(attr != null && "false".equalsIgnoreCase(attr.getValue()))
                 return;
         }
-
-        if(attr == null || attribute.getValue().startsWith("@")) {
+        if(attr == null) {
+            if(!(element.getTagName().equals(BUTTON) || element.getTagName().equals(CHECK_BOX)
+                    || element.getTagName().equals(RADIO_BUTTON) || element.getTagName().equals(EDIT_TEXT))) {
+                return;
+            }
+        }
+        if(attribute.getValue().startsWith("@")) {
             return;
         }
 

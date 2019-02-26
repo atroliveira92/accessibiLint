@@ -164,7 +164,7 @@ public class BackgroundNoClickDetector extends ResourceXmlDetector {
                     hasChildOnClick = true;
                     break;
                 } else {
-                    attrOnClick = element.getAttributeNodeNS(ANDROID_URI, ATTR_CLICKABLE);
+                    attrOnClick = child.getAttributeNodeNS(ANDROID_URI, ATTR_CLICKABLE);
                     if (attrOnClick != null && "true".equalsIgnoreCase(attrOnClick.getValue())) {
                         hasChildOnClick = true;
                         break;

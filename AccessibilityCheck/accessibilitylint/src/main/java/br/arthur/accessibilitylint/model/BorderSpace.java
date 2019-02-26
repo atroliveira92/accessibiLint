@@ -88,7 +88,7 @@ public class BorderSpace {
         if (attribute != null) {
             String value = attribute.getValue();
 
-            if (!value.startsWith("@") && value.endsWith("dp")) {
+            if (!value.startsWith("@") && (value.endsWith("dp") || value.endsWith("dip"))) {
                 int index = value.indexOf("d");
                 value = value.substring(0, index);
                 return Integer.parseInt(value);

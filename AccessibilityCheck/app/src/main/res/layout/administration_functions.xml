@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="5dp" >
+
+        <!-- PREFERENCES Header -->
+
+        <com.eleybourn.bookcatalogue.widgets.CapitalizedTextView
+            style="@style/prefs_header"
+            android:text="@string/preferences" />
+
+        <!-- BOOKSHELVES -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookshelf_label"
+            android:text="@string/menu_bookshelf" />
+
+        <!-- FIELDS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fields_label"
+            android:text="@string/menu_manage_fields" />
+
+        <!-- BOOK LIST PREFS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/booklist_preferences_label"
+            android:text="@string/booklist_preferences" />
+
+        <!-- Edit Styles -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/edit_styles_label"
+            android:text="@string/edit_book_list_styles" />
+
+        <!-- OTHER PREFS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/other_prefs_label"
+            android:text="@string/other_preferences" />
+
+        <!-- DATA IMPORT/EXPORT -->
+
+        <com.eleybourn.bookcatalogue.widgets.CapitalizedTextView
+            style="@style/prefs_header"
+            android:text="@string/data_import_export" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backup_catalogue_label"
+            android:text="@string/backup_to_archive" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restore_catalogue_label"
+            android:text="@string/import_from_archive" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/export_label"
+            android:text="@string/export_to_csv" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/import_label"
+            android:text="@string/import_from_csv" />
+
+        <!-- UPDATE FIELDS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/thumb_label"
+            android:text="@string/update_fields" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/sync_with_goodreads_label"
+            android:text="@string/sync_with_goodreads" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/import_all_from_goodreads_label"
+            android:text="@string/import_all_from_goodreads" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/send_books_to_goodreads_label"
+            android:text="@string/send_books_to_goodreads" />
+
+        <!-- CREDENTIALS HEADING -->
+
+        <com.eleybourn.bookcatalogue.widgets.CapitalizedTextView
+            style="@style/prefs_header"
+            android:text="@string/credentials" />
+
+        <!-- GOODREADS CREDENTIALS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/goodreads_auth"
+            android:text="@string/goodreads" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/librarything_auth"
+            android:text="@string/library_thing" />
+
+        <!-- ADVANCED OPTIONS Header -->
+
+        <com.eleybourn.bookcatalogue.widgets.CapitalizedTextView
+            style="@style/prefs_header"
+            android:text="@string/advanced_options" />
+
+        <!-- BACKGROUND TASKS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/background_tasks_label"
+            android:text="@string/background_tasks" />
+
+        <!-- RESET HINTS -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reset_hints_label"
+            android:text="@string/reset_hints" />
+
+        <!-- ERASE COVER CACHE -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/erase_cover_cache_label"
+            android:text="@string/erase_cover_cache" />
+
+        <!-- BACKUP DATABASE (DEBUG ONLY!) -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/backup_label"
+            android:text="@string/copy_database" />
+    </LinearLayout>
+
+</ScrollView>

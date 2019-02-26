@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+	        android:paddingBottom="8dp"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" >
+
+                <!-- Read -->
+
+                <ImageView
+                    android:id="@+id/read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="top|right"
+                    android:scaleType="fitXY"
+                    android:visibility="visible" />
+
+                <!-- Title -->
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignWithParentIfMissing="true"
+                    android:layout_toLeftOf="@+id/read"
+                    android:text="Anna Karenina"
+                    android:textStyle="italic"
+                    tools:ignore="HardcodedText" />
+
+                <!-- Author -->
+
+                <TextView
+                    android:id="@+id/author"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/title"
+                    android:paddingBottom="8dp"
+                    android:text="Lev Tolstoy"
+                    tools:ignore="HardcodedText" />
+
+                <LinearLayout
+                    android:id="@+id/rating_wrapper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/author" >
+
+                    <RatingBar
+                        android:id="@+id/rating"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:paddingBottom="8dp" />
+                </LinearLayout>
+
+                <!-- ISBN -->
+
+                <LinearLayout
+                    android:id="@+id/row_isbn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rating_wrapper"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/isbn_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="6dp"
+                        android:text="@string/isbn" />
+
+                    <TextView
+                        android:id="@+id/isbn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="97834579862"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+
+                <!-- Pages & Format -->
+
+                <LinearLayout
+                    android:id="@+id/row_format"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/row_isbn"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/pages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="6dp"
+                        android:text="573 pages"
+                        tools:ignore="HardcodedText" />
+
+                    <TextView
+                        android:id="@+id/format"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(Hardcover)"
+                        tools:ignore="HardcodedText" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- layout_height for image_wrapper used to be wrap_content but caused the image to disappear??? wtf? -->
+            <RelativeLayout
+                android:id="@+id/image_wrapper"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="top|center_horizontal"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/row_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:adjustViewBounds="true"
+                    android:background="@color/background_thumb"
+                    android:padding="5dp"
+                    android:scaleType="centerInside" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/header_div"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            />
+
+        <!-- Series -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_series"
+            android:text="@string/series" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/series"
+            android:singleLine="false"
+            android:text="Series name (1)\\nSeries name (2)"
+            tools:ignore="HardcodedText" />
+
+        <!-- Publishing -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_publishing"
+            android:text="@string/book_details_readonly_publishing" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/publishing_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Publisher name, Jan 25, 2012"
+                tools:ignore="HardcodedText" />
+
+        </LinearLayout>
+
+        <!-- Shelves -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_bookshelves"
+            android:text="@string/bookshelves" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookshelf"
+            android:text="The best books, Wanted"
+            tools:ignore="HardcodedText" />
+
+        <!-- Genre -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_genre"
+            android:text="@string/genre" />
+
+        <TextView
+            android:id="@+id/genre"
+            android:text="Science Fiction"
+            tools:ignore="HardcodedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <!-- Genre -->
+
+        <TextView
+            android:id="@+id/lbl_language"
+            android:text="@string/language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/language"
+            android:text="Quenya"
+            tools:ignore="HardcodedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/row_list_price"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:text="@string/list_price" />
+
+                <TextView
+                    android:id="@+id/list_price"
+                    android:layout_weight="1"
+                    android:text="45"
+                    tools:ignore="HardcodedText" />
+            </TableRow>
+
+            <!-- Checkbox below is unused now. -->
+            <!-- Used only for compatibility with edit_book -->
+
+            <CheckBox
+                android:id="@+id/anthology"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/my_comments"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/notes"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp" />
+
+        <!-- Notes -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lbl_notes"
+            android:text="@string/edit_book_notes" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/notes"
+            android:text="The best book of all times"
+            tools:ignore="HardcodedText" />
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <!-- Has this book been signed -->
+
+            <LinearLayout
+                android:id="@+id/row_signed"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/signed" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/signed"
+                    android:text="@string/no" />
+
+            </LinearLayout>
+
+            <!-- Start and end of reading -->
+
+            <TableRow
+                android:id="@+id/row_read_start"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:text="@string/read_start" />
+
+                <TextView
+                    android:id="@+id/read_start"
+                    android:layout_weight="1"
+                    android:text="Nov 10, 2011"
+                    tools:ignore="HardcodedText" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row_read_end"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:text="@string/read_end" />
+
+                <TextView
+                    android:id="@+id/read_end"
+                    android:layout_weight="1"
+                    android:text="Dec 15, 2011"
+                    tools:ignore="HardcodedText" />
+            </TableRow>
+
+            <!-- Location of the book -->
+
+            <TableRow
+                android:id="@+id/row_location"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:text="@string/location_of_book" />
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_weight="1"
+                    android:text="Library"
+                    tools:ignore="HardcodedText" />
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/who"
+            android:hint="@string/notset"
+            android:visibility="gone" />
+
+        <!-- Description -->
+
+        <TextView
+            android:id="@+id/descriptionLabel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/description"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <View
+            android:id="@+id/description_divider"
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp" />
+
+        <com.eleybourn.bookcatalogue.widgets.SafeSpannedTextView
+            android:id="@+id/description"
+            android:textIsSelectable="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="I hereby nominate Lizard the humongous football player and Sylphide the mysterious ballerina as two of my favorite characters of 2012. Rarely have such elite and outsize personalities felt so true on the page--a joy to be with, worth rooting for."
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            tools:ignore="HardcodedText" />
+    </LinearLayout>
+
+</ScrollView>

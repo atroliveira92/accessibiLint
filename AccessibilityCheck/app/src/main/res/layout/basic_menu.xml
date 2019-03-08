@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2011 Sonja Pieper
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"  
+	      android:layout_width="wrap_content"
+          android:layout_height="wrap_content">
+    <item android:id="@+id/basic_menu_create_entry"
+    	  android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:icon="@android:drawable/ic_menu_edit"
+          android:title="@string/menu_create" />
+    <item android:id="@+id/basic_menu_showtype"
+    	  android:layout_width="wrap_content"
+    	  android:layout_height="wrap_content"
+          android:icon="@android:drawable/ic_menu_set_as"
+          android:title="@string/menu_showtype" />         
+    <item android:id="@+id/basic_menu_settings"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:icon="@android:drawable/ic_menu_preferences"
+          android:title="@string/menu_prefs" />  
+    <item android:id="@+id/basic_menu_export"
+    	  android:showAsAction="ifRoom|withText"
+    	  android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:icon="@android:drawable/ic_menu_save"
+          android:title="Export Data" />
+    <item android:id="@+id/basic_menu_import"
+    	  android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:icon="@android:drawable/ic_menu_revert"
+          android:title="Import Data" />
+    <item android:id="@+id/basic_menu_deleteall"
+    	  android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:icon="@android:drawable/ic_menu_delete"
+          android:title="@string/menu_deleteall"/>                      
+    <item android:id="@+id/basic_menu_homepage"
+    	  android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:icon="@android:drawable/ic_menu_info_details"
+          android:title="@string/menu_about"/> 
+</menu>
+

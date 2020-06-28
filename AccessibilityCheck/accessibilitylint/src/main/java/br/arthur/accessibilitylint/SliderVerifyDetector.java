@@ -32,7 +32,7 @@ public class SliderVerifyDetector extends ResourceXmlDetector {
 
     public static final Issue ISSUE_AVOID_SLIDERS = Issue.create(
             "AvoidSliderIssue",
-            "Color contrast ratio bad accessibility",
+            "Avoid to use sliders like Seekbars",
             "Problemas com a cor do componente",
             A11Y,
             4,

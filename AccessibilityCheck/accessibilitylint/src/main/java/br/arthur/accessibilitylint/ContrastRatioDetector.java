@@ -37,7 +37,7 @@ public class ContrastRatioDetector extends ResourceXmlDetector {
     private static final double MIN_CONTRAST_RATIO = 4.5;
 
     public static final Issue ISSUE_COLOR_CONTRAST_RATIO = Issue.create(
-            "ColorContrastRatio",
+            "ColorContrastRatioIssue",
             "Color contrast ratio bad accessibility",
             "Problemas com a cor do componente",
             A11Y,

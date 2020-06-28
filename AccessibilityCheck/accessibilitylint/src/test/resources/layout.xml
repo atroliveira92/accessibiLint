@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,13 +9,20 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="1dp">
 
         <LinearLayout
+            android:clickable="false"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="3dp">
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -25,8 +32,7 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:background="?attr/colorPrimary"
-                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+                    android:background="?attr/colorPrimary"/>
 
             </android.support.design.widget.AppBarLayout>
 
@@ -67,7 +73,8 @@
                 android:text="Click here"
                 android:onClick="accessLink"
                 android:textColor="#A68026"
-                android:background="#4A3AB3"/>
+                android:background="#4A3AB3"
+                android:layout_margin="3dp"/>
 
             <Button
                 android:layout_width="wrap_content"
@@ -99,9 +106,22 @@
                 android:textColor="#A68026"
                 android:background="#4A3AB3"/>
 
-
+        </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="33dp"
+        android:background="@color/dark_blue"
+        android:text="@string/login"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:onClick="blabla"/>
 
     <LinearLayout
         android:layout_width="wrap_content"

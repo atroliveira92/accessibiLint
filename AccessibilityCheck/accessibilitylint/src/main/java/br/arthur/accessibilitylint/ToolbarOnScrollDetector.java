@@ -32,7 +32,7 @@ public class ToolbarOnScrollDetector extends ResourceXmlDetector {
 
     public static final Issue ISSUE_TOOLBAR_SCROLL_VIEW = Issue.create(
             "ToolbarIssueScrollView",
-            "Color contrast ratio bad accessibility",
+            "Avoid put toolbar inside a scrollview layout",
             "Problemas com a cor do componente",
             A11Y,
             4,

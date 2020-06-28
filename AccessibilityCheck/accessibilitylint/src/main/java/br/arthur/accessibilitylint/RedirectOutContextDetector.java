@@ -58,7 +58,7 @@ public class RedirectOutContextDetector extends Detector implements Detector.Uas
 
     static final Issue ISSUE_REDIRECT_OUT_OF_CONTEXT = Issue.create(
             "RedirectOuOfContext",
-            "Avoid make the background view clickable",
+            "Ask before redirect user out of application",
             "Evitar a exigência de realizar toques no plano de fundo do aplicativo para realizar determinada ação, ou seja, fora dos componentes de interface",
             A11Y,
             6,

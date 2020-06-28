@@ -32,6 +32,7 @@ public class CustomIssueRegistry extends IssueRegistry {
                 add(TitleActivityDetector.ISSUE_TITLE_ACTIVITY);
                 add(EditTextDetector.ISSUE_AWAYS_IMPLEMENT_INPUTTEXT);
                 add(EditTextDetector.ISSUE_USE_AUTOCOMPLETE_TEXT_VIEW);
+                add(BorderComponentDetector.ISSUE_BORDER_COMPONENT_DETECTOR);
                 add(DuplicatedTextRuleText.ISSUE_DUPLICATE_TEXTS_IN_LAYOUT);
                 add(SpacedWordsRuleText.ISSUE_SPACED_WORDS);
                 add(TooManyInteractableViewsDetector.ISSUE_LIST_ITEM_IN_TOO_MANY_VIEWS_LAYOUT);

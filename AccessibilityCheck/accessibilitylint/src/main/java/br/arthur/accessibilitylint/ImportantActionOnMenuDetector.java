@@ -26,7 +26,7 @@ import static com.android.tools.lint.detector.api.Severity.WARNING;
 public class ImportantActionOnMenuDetector extends ResourceXmlDetector {
 
     public static final Issue ISSUE_IMPORTANT_ACTION_ON_MENU = Issue.create(
-            "TestActionOnMenu",
+            "ImportantActionOnMenuIssue",
             "Important action must be on the corner and easy accessible",
             "According to Siebra et al. (2017), interface components containing important actions must be located near the corners of the screen and easily accessible to the visually impaired user, without entering more than two touches to access",
             A11Y,

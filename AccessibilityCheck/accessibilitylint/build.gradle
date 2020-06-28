@@ -7,11 +7,11 @@ dependencies {
 
 dependencies {
     //Lint dependencies:
-    compileOnly 'com.android.tools.lint:lint-api:26.2.1'
-    compileOnly 'com.android.tools.lint:lint-checks:26.2.1'
-    testCompile 'com.android.tools.lint:lint-tests:26.2.1'
+    compileOnly 'com.android.tools.lint:lint-api:26.3.0'
+    compileOnly 'com.android.tools.lint:lint-checks:26.3.0'
+    testCompile 'com.android.tools.lint:lint-tests:26.3.0'
     testCompile 'junit:junit:4.12'
-    testCompile 'org.assertj:assertj-core:3.0.0'
+    testCompile 'org.assertj:assertj-core:3.8.0'
 }
 
 jar {
